@@ -7,6 +7,7 @@ import Layout from "./Components/Layout"
 import Home, { homeloader } from "./Pages/Home"
 import Fleet, { fleetLoader } from "./Pages/Fleet"
 import BookSumm from "./Pages/BookSumm"
+import About from "./Pages/About"
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter(createRoutesFromElements(
      path="fleet"
      element={<Fleet />}
      loader={fleetLoader}
+    />
+    <Route 
+    path="about"
+    element={<About />}
     />
       <Route
     path="booking-summary" 
