@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 
 const BookingDeets = () => {
     const location = useLocation();
-    const {pickUpAddress, dropOffAddress, pickUpDate, pickUpTime} = location.state
+    const {pickUpAddress, dropOffAddress, pickUpDate, pickUpTime} = location.state;
   return (
     <div className="w-full max-w-[500px] md:min-w-[410px] lg:w-1/5 p-6 px-3 bg-white rounded-sm border flex flex-col gap-4 self-start">
         <article>
@@ -23,6 +23,6 @@ const BookingDeets = () => {
         </article>
         <button className=" uppercase bg-slate-900 text-gray-50 p-2 px-4 font-semibold">edit</button>
     </div>
-  )
+  );
 }
 export default BookingDeets

@@ -10,7 +10,6 @@ const BookingForm = () => {
       pickUpTime: "",
       pickUpDate: "",
   });
-  console.log(location.pathname)
 
     function handleFormInputs(e){
         const {name, value} = e.target;
@@ -27,7 +26,7 @@ const BookingForm = () => {
       if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
         setErrorMessage("Please fill in all input fields");
       }else{
-        navigate("fleet", {state: formData})
+        navigate("/fleet", {state: formData})
       }
     }
 
@@ -68,9 +67,11 @@ const BookingForm = () => {
           className="py-2 px-4 bg-gray-200 rounded-md w-1/2 outline-none" />
         </div>
         {errorMessage && <p className=" text-red-600">{errorMessage}</p>}
-        <button 
+        {location.pathname == "/fleet" ? <button 
         type="submit"
-        className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Reserve Now</button>
+        className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
+        type="submit"
+        className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Reserve Now</button>}
     </form>
   )
 }

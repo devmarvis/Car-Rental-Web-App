@@ -15,11 +15,19 @@ const Fleet = () => {
   const loaderData = useLoaderData();
   const [brand, setBrand] = useState("");
   const navigate = useNavigate();
+  const bookingDeets = location.state;
   
 
 
   function handleBrandSelection(e){
     setBrand(e.target.value);
+  }
+
+  function handleBook(car){
+    if(!bookingDeets){
+      return console.log("error");
+    }
+    navigate("/booking-summary", {state: {...bookingDeets, car: car}})
   }
   return (
     <section className="w-full p-7 sm:px-20 pt-28 flex flex-col lg:flex-row gap-5">
@@ -60,7 +68,7 @@ const Fleet = () => {
                             <h4 className=" text-xl font-semibold">{car.model}</h4>
                             <p className=" font-semibold">${car.price}/day</p>
                             <button
-                            onClick={() => navigate("/booking-summary")}
+                            onClick={() => handleBook(car)}
                             className="capitalize px-4 py-2 bg-gray-900 text-gray-50 rounded-full mt-3">book now</button>
                           </article>
                         </div>
