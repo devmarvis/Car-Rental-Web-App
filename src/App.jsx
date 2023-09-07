@@ -8,6 +8,9 @@ import Home, { homeloader } from "./Pages/Home"
 import Fleet, { fleetLoader } from "./Pages/Fleet"
 import BookSumm from "./Pages/BookSumm"
 import About from "./Pages/About"
+import { useEffect } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 
 
@@ -36,6 +39,10 @@ const router = createBrowserRouter(createRoutesFromElements(
 ))
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   return (
     <RouterProvider router={router} />
