@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAppContext } from "../Context/AppContext";
 
-const BookingForm = () => {
-    const location = useLocation();
+const BookingForm = ({ handleEdit }) => {
+    // const location = useLocation();
     const navigate = useNavigate();
     const [formData, setFormData] = useState(location.state || {
       pickUpAddress: "",
@@ -10,6 +11,8 @@ const BookingForm = () => {
       pickUpTime: "",
       pickUpDate: "",
   });
+
+  const {formDetails, selectedCar, selectCar, handleBookingForm} = useAppContext();
 
     function handleFormInputs(e){
         const {name, value} = e.target;
@@ -26,7 +29,17 @@ const BookingForm = () => {
       if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
         setErrorMessage("Please fill in all input fields");
       }else{
-        navigate("/fleet", {state: formData})
+        handleBookingForm(formData);
+        navigate("/fleet");
+      }
+    }
+
+    function handleSave(){
+      if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
+        setErrorMessage("Please fill in all input fields");
+      }else{
+        handleBookingForm(formData);
+        handleEdit();
       }
     }
 
@@ -68,11 +81,12 @@ const BookingForm = () => {
         </div>
         {errorMessage && <p className=" text-red-600">{errorMessage}</p>}
         {location.pathname == "/fleet" ? <button 
-        type="submit"
+        onClick={handleSave}
         className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
         type="submit"
         className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Reserve Now</button>}
     </form>
+    
   )
 }
 export default BookingForm

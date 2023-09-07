@@ -3,6 +3,7 @@ import { getCars } from "../firebase";
 import BookingDeets from "../Components/BookingDeets";
 import BookingForm from "../Components/BookingForm";
 import { Suspense, useState } from "react";
+import { useAppContext } from "../Context/AppContext";
 
 
 export async function fleetLoader(){
@@ -11,11 +12,11 @@ export async function fleetLoader(){
 }
 
 const Fleet = () => {
-  const location = useLocation();
+  const { formDetails, selectCar } = useAppContext();
   const loaderData = useLoaderData();
   const [brand, setBrand] = useState("");
+  const [edit, setEdit] = useState(false);
   const navigate = useNavigate();
-  const bookingDeets = location.state;
   
 
 
@@ -24,14 +25,20 @@ const Fleet = () => {
   }
 
   function handleBook(car){
-    if(!bookingDeets){
+    if(!formDetails){
       return console.log("error");
     }
-    navigate("/booking-summary", {state: {...bookingDeets, car: car}})
+    selectCar(car);
+    navigate("/booking-summary")
   }
+
+  function handleFormEdit(){
+    setEdit(!edit);
+  }
+
   return (
     <section className="w-full p-7 sm:px-20 pt-28 flex flex-col lg:flex-row gap-5">
-      {location.state ? <BookingDeets /> : <BookingForm />}
+      {!edit ? <BookingDeets handleEdit={handleFormEdit} /> : <BookingForm handleEdit={handleFormEdit} />}
         <div className="flex flex-col items-start w-full lg:w-4/5">
           <h3 className="font-semibold text-xl font-['Roboto'] mb-1">Select Car Brand:</h3>
           <select 

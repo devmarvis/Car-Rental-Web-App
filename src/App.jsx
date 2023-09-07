@@ -11,6 +11,8 @@ import About from "./Pages/About"
 import { useEffect } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import Payment from "./Pages/Payment"
+import { AppProvider } from "./Context/AppContext"
 
 
 
@@ -28,12 +30,16 @@ const router = createBrowserRouter(createRoutesFromElements(
      loader={fleetLoader}
     />
     <Route 
-    path="about"
-    element={<About />}
+     path="about"
+     element={<About />}
     />
-      <Route
-    path="booking-summary" 
-    element={<BookSumm />}
+    <Route
+     path="booking-summary" 
+     element={<BookSumm />}
+    />
+    <Route 
+     path="/booking-summary/payment"
+     element={<Payment />}
     />
   </Route>
 ))
@@ -45,7 +51,9 @@ function App() {
   }, []);
 
   return (
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   )
 }
 

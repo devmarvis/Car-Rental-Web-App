@@ -18,7 +18,7 @@ const About = () => {
         <Team />
       </div>
       <div className="w-full">
-        <h4 className=" capitalize text-center text-2xl font-['Roboto'] font-medium mb-4">frequently asked questions</h4>
+        <h4 className=" capitalize text-center text-2xl font-['Roboto'] font-medium mb-7">frequently asked questions</h4>
         <FAQS />
       </div>
     </section>
