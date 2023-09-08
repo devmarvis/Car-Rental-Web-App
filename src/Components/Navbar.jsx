@@ -1,9 +1,12 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { Close, Hamburger } from "../assets/icons"
 import { useState } from "react"
+import { useAppContext } from "../Context/AppContext";
 
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
+    const navigate = useNavigate()
+    const { loginDetails } =  useAppContext();
 
     function handleActiveLink({isActive}){
         return {
@@ -13,6 +16,11 @@ const Navbar = () => {
 
     function handleMobileNavbar(){
         setShowNav(prev => !prev);
+    }
+
+    function handleLoginBtn(){
+        navigate("login");
+        setShowNav(false)
     }
 
   return (
@@ -39,9 +47,15 @@ const Navbar = () => {
             onClick={() => setShowNav(false)}
             style={handleActiveLink}
             >About Us</NavLink>
-            <button className="sm:hidden block">Login/Signup</button>
+            {loginDetails ? <button
+            className="sm:hidden block">Logout</button> : <button
+            onClick={handleLoginBtn}
+            className="sm:hidden block">Login/Signup</button>}
         </ul>
-        <button className="hidden sm:block">Login/Signup</button>
+        {loginDetails ? <button
+            className="hidden sm:block">Logout</button> : <button 
+        onClick={handleLoginBtn}
+        className="hidden sm:block">Login/Signup</button>}
         <div className=" cursor-pointer block sm:hidden">
         {showNav ? <Close navController={handleMobileNavbar} /> : <Hamburger navController={handleMobileNavbar} />}
         </div>

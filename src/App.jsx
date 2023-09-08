@@ -14,6 +14,8 @@ import "aos/dist/aos.css"
 import Payment from "./Pages/Payment"
 import { AppProvider } from "./Context/AppContext"
 import Successful from "./Pages/Successful"
+import Login from "./Pages/Login"
+import SignIn from "./Components/SignIn"
 
 
 
@@ -50,6 +52,15 @@ const router = createBrowserRouter(createRoutesFromElements(
     path="*"
     element={<section></section>}
      />
+    <Route
+    path="login"
+    element={<Login />}
+    >
+      <Route 
+      index
+      element={<SignIn />}
+      />
+    </Route>
   </Route>
 ))
 

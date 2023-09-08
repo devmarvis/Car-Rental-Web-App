@@ -10,6 +10,7 @@ export const useAppContext = () => {
 export const AppProvider = ({children}) => {
     const [formDetails, setFormDetails] = useState(null);
     const [selectedCar, setSelectedCar] = useState(null);
+    const [loginDetails, setLoginDetails] = useState(null);
 
     function selectCar(car){
         setSelectedCar(car);
@@ -18,9 +19,16 @@ export const AppProvider = ({children}) => {
     function handleBookingForm(details){
         setFormDetails(details)
     }
+
+    function handleLogin(credentials){
+        setLoginDetails(credentials);
+    }
+
+
+
     return (
         <AppContext.Provider value={{
-            formDetails, selectedCar, selectCar, handleBookingForm,
+            formDetails, selectedCar, selectCar, handleBookingForm, loginDetails, handleLogin,
         }}>
             {children}
         </AppContext.Provider>
