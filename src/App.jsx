@@ -13,6 +13,7 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import Payment from "./Pages/Payment"
 import { AppProvider } from "./Context/AppContext"
+import Successful from "./Pages/Successful"
 
 
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
      path="/booking-summary/payment"
      element={<Payment />}
+    />
+    <Route 
+    path="/payment-success"
+    element={<Successful />}
     />
   </Route>
 ))

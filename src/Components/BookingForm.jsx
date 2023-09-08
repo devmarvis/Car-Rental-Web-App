@@ -1,18 +1,16 @@
-import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../Context/AppContext";
 
 const BookingForm = ({ handleEdit }) => {
-    // const location = useLocation();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState(location.state || {
+    const {formDetails, handleBookingForm} = useAppContext();
+    const [formData, setFormData] = useState(formDetails || {
       pickUpAddress: "",
       dropOffAddress: "",
       pickUpTime: "",
       pickUpDate: "",
   });
-
-  const {formDetails, selectedCar, selectCar, handleBookingForm} = useAppContext();
 
     function handleFormInputs(e){
         const {name, value} = e.target;
@@ -80,7 +78,7 @@ const BookingForm = ({ handleEdit }) => {
           className="py-2 px-4 bg-gray-200 rounded-md w-1/2 outline-none" />
         </div>
         {errorMessage && <p className=" text-red-600">{errorMessage}</p>}
-        {location.pathname == "/fleet" ? <button 
+        {location.pathname !== "/" ? <button 
         onClick={handleSave}
         className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
         type="submit"

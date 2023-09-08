@@ -16,7 +16,7 @@ const Navbar = () => {
     }
 
   return (
-    <nav className="fixed top-0 flex justify-between items-center border-b h-20 px-7 sm:px-20 w-full font-['Roboto'] z-50 bg-[#EEEDED]">
+    <nav className="fixed top-0 flex justify-between items-center border-b h-20 px-7 sm:px-20 w-full font-['Roboto'] z-40 bg-[#EEEDED]">
         <Link className=" text-4xl uppercase font-bold text-[#4477CE] font-logo">bcr</Link>
         <ul className={`flex flex-col sm:flex-row items-center gap-10 sm:gap-5 md:gap-12 w-full sm:w-auto absolute sm:relative top-20 sm:top-auto right-0 sm:right-auto py-8 sm:py-auto ${showNav ? "translate-x-0" : "translate-x-full"} sm:translate-x-0 transition-transform backdrop-blur-sm sm:backdrop-blur-none `}>
             <NavLink

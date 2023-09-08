@@ -38,7 +38,7 @@ const Fleet = () => {
 
   return (
     <section className="w-full p-7 sm:px-20 pt-28 flex flex-col lg:flex-row gap-5">
-      {!edit ? <BookingDeets handleEdit={handleFormEdit} /> : <BookingForm handleEdit={handleFormEdit} />}
+      {!edit && formDetails ? <BookingDeets handleEdit={handleFormEdit} /> : <BookingForm handleEdit={handleFormEdit} />}
         <div className="flex flex-col items-start w-full lg:w-4/5">
           <h3 className="font-semibold text-xl font-['Roboto'] mb-1">Select Car Brand:</h3>
           <select 

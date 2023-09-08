@@ -1,19 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import BookingDeets from "../Components/BookingDeets";
 import { useAppContext } from "../Context/AppContext";
+import { useState } from "react";
+import BookingForm from "../Components/BookingForm";
 
 const BookSumm = () => {
-  const { selectedCar } = useAppContext();
-  const navigate = useNavigate();
+  const { selectedCar, formDetails } = useAppContext();
+  const [edit, setEdit] = useState(false);
 
-  function handleNavToPayment(){
-    navigate("payment");
+  function handleFormEdit(){
+    setEdit(!edit);
   }
+  
   return (
     <section className="w-full p-7 sm:px-20 pt-28">
         <h3 className=" font-['Roboto'] font-semibold text-lg">Booking Summary:</h3>
         <div className=" flex flex-col w-full max-w-3xl">
-          <BookingDeets />
+        { !edit && formDetails ? <BookingDeets handleEdit={handleFormEdit} /> : <BookingForm handleEdit={handleFormEdit} />}
           <div className="w-full flex flex-col md:flex-row mt-4">
             <div 
             className="w-full max-w-[350px] md:w-1/2 lg:w-[43%] h-[200px]">
