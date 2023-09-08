@@ -24,11 +24,21 @@ export const AppProvider = ({children}) => {
         setLoginDetails(credentials);
     }
 
+    function handleLogout(){
+        setLoginDetails(null)
+    }
+
 
 
     return (
         <AppContext.Provider value={{
-            formDetails, selectedCar, selectCar, handleBookingForm, loginDetails, handleLogin,
+            formDetails, 
+            selectedCar, 
+            selectCar, 
+            handleBookingForm, 
+            loginDetails, 
+            handleLogin,
+            handleLogout,
         }}>
             {children}
         </AppContext.Provider>

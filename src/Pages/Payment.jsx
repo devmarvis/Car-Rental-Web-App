@@ -72,6 +72,7 @@ const Payment = () => {
                 className=" font-['Roboto']"
                 >Name of Card Owner</label>
                 <input 
+                autoComplete="name"
                 type="text"
                 id="name" 
                 placeholder="Enter name on card" className="block bg-blue-100 p-2 px-4 mt-1 w-full rounded-sm"  />
@@ -82,6 +83,7 @@ const Payment = () => {
                 className=" font-['Roboto']"
                 >Email Address</label>
                 <input 
+                autoComplete="email"
                 type="email"
                 id="email" 
                 placeholder="Enter email address" className="block bg-blue-100 p-2 px-4 mt-1 w-full rounded-sm"  />
@@ -92,9 +94,9 @@ const Payment = () => {
                 className=" font-['Roboto']"
                 >Card Number</label>
                 <input 
+                autoComplete="cc-number"
                 type="text"
                 id="card-no" 
-                maxLength={12}
                 placeholder="Enter card number" className="block bg-blue-100 p-2 px-4 mt-1 w-full rounded-sm"  />
               </div>
               <div className="flex  justify-between">
@@ -104,6 +106,7 @@ const Payment = () => {
                   className=" font-['Roboto']"
                   >Expiry Date</label>
                   <input 
+                  autoComplete="cc-exp"
                   type="month" 
                   name="expiry" 
                   id="expiry" 
@@ -116,19 +119,19 @@ const Payment = () => {
                   className=" font-['Roboto']"
                   >CVV</label>
                   <input 
+                  autoComplete="cc-csc"
                   type="text" 
                   name="cvv" 
                   id="cvv" 
                   placeholder="CVV"
-                  maxLength={3}
                   className="block mt-1 p-2 px-4 w-24 bg-blue-100 rounded-sm" />
                 </div>
               </div>
+              <button 
+              onClick={() => navigate("/payment-success", {replace: true})}
+              className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
             </form>
           </div>
-          <button 
-          onClick={() => navigate("/payment-success", {replace: true})}
-          className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
         </div>
     </section>
   )

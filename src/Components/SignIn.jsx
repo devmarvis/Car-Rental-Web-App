@@ -7,7 +7,7 @@ const SignIn = () => {
     email: "",
     password: "",
   })
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
    const { handleLogin, loginDetails }  = useAppContext();
    const navigate = useNavigate();
 
@@ -18,19 +18,15 @@ const SignIn = () => {
         ...prev,
         [name]: value,
       }
-    ))
+    ));
   }
 
-  function handleSubmit(e){
-    e.preventDefault();
-    handleLogin(credentials)
-    
-    //Fake Authentication
-    if(!loginDetails.email || !loginDetails.password){
-      setErrorMessage("Please enter valid login details")
-    }else{
-      navigate("/", {replace: true})
+  function handleSubmit(){
+    if(!credentials.email || !credentials.password){
+      return false;
     }
+    handleLogin(credentials);
+    navigate("/", {replace: true})
   }
 
 
@@ -39,7 +35,6 @@ const SignIn = () => {
       <h3 className="text-center text-2xl font-semibold font-['Roboto'] mb-2 text-[#4477CE]">Welcome Back!</h3>
       {errorMessage && <p className=" text-red-500 text-center">{errorMessage}</p>}
       <form 
-      onSubmit={handleSubmit}
     className="w-full h-auto flex flex-col"
     >
       <div className="w-full mb-3">
@@ -63,8 +58,10 @@ const SignIn = () => {
          <input type="checkbox" id="showPassword" />
          <label htmlFor="showPassword" className="ml-2">show password</label>
       </div>
-      <button className=" p-2 px-4 bg-gray-900 text-gray-50 uppercase font-['Raleway'] font-medium tracking-wider rounded-sm mt-5 mb-2">LOGIN</button>
     </form>
+    <button 
+      onClick={handleSubmit}
+      className=" p-2 px-4 bg-gray-900 text-gray-50 uppercase font-['Raleway'] font-medium tracking-wider rounded-sm mt-5 mx-auto mb-2">LOGIN</button>
     <p className="text-center">Don't have an account?<Link className=" underline underline-offset-2">Signup</Link> </p>
     </div>
   )

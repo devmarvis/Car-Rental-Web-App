@@ -6,7 +6,7 @@ import { useAppContext } from "../Context/AppContext";
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
     const navigate = useNavigate()
-    const { loginDetails } =  useAppContext();
+    const { loginDetails, handleLogout } =  useAppContext();
 
     function handleActiveLink({isActive}){
         return {
@@ -21,6 +21,11 @@ const Navbar = () => {
     function handleLoginBtn(){
         navigate("login");
         setShowNav(false)
+    }
+
+    function handleLogoutBtn(){
+        handleLogout();
+        navigate("/");
     }
 
   return (
@@ -47,13 +52,18 @@ const Navbar = () => {
             onClick={() => setShowNav(false)}
             style={handleActiveLink}
             >About Us</NavLink>
-            {loginDetails ? <button
+            {loginDetails?.email && loginDetails?.password ? 
+            <button
+            onClick={handleLogoutBtn}
             className="sm:hidden block">Logout</button> : <button
             onClick={handleLoginBtn}
             className="sm:hidden block">Login/Signup</button>}
         </ul>
-        {loginDetails ? <button
-            className="hidden sm:block">Logout</button> : <button 
+        {loginDetails?.email && loginDetails?.password ? 
+        <button
+        onClick={handleLogoutBtn}
+        className="hidden sm:block">Logout</button> : 
+        <button 
         onClick={handleLoginBtn}
         className="hidden sm:block">Login/Signup</button>}
         <div className=" cursor-pointer block sm:hidden">
