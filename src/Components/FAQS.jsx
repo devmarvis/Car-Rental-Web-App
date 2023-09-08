@@ -14,7 +14,11 @@ function FAQItem({question, answer}){
         <div 
         onClick={toggleOpen}
         className={`p-4 px-9 w-full border-b rounded ${isOpen ? "bg-blue-50" : ""}`}>{/*faq item */}
-            <div className=" flex justify-between mb-2">{/*faq question */}
+            <div 
+            data-aos="zoom-in"
+            data-aos-duration="500"
+            data-aos-anchor-placement="bottom-bottom"
+            className=" flex justify-between mb-2">{/*faq question */}
                 <span className=" font-['Roboto'] font-semibold text-[#4477CE]">{question}</span>
                 <span>
                     <FontAwesomeIcon

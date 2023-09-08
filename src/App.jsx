@@ -46,6 +46,10 @@ const router = createBrowserRouter(createRoutesFromElements(
     path="/payment-success"
     element={<Successful />}
     />
+    <Route
+    path="*"
+    element={<section></section>}
+     />
   </Route>
 ))
 

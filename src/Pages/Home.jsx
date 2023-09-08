@@ -4,15 +4,19 @@ import bg2 from "../assets/images/bg2.jpg"
 import { faClockRotateLeft, faHandHoldingDollar, faHeadset } from "@fortawesome/free-solid-svg-icons"
 import { getCars } from "../firebase"
 import { Await, Link, defer, useLoaderData } from "react-router-dom"
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 
 export async function homeloader(){
-  const data = await getCars();
+  const data = getCars();
   return defer({data: data});
 }
 
 const Home = () => {
-  const loaderData = useLoaderData()
+  const loaderData = useLoaderData();
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
 
   return (
     <section 
@@ -23,17 +27,32 @@ const Home = () => {
         }}
       className="relative w-full h-[90vh] max-h-[754px] bg-cover bg-center bg-no-repeat px-7 sm:px-20 pt-32 after:w-full after:h-full"
       >{/*Hero Section */}
-        <article className=" text-gray-900 mb-8">
+        <article 
+        data-aos="zoom-in"
+        data-aos-duration="700"
+        className=" text-gray-900 mb-8">
           <h3 className=" capitalize text-2xl md:text-4xl md:leading-relaxed leading-normal font-['Raleway'] font-medium mb-2">Why wait in line when you<br/> can book your<br/><span className=" font-bold">rental car online?</span></h3>
           <p className=" tracking-wide font-['Inter']">Rent a car at your fingertips, no extra charges.</p>
         </article>
-        <BookingForm />
+        <div 
+        data-aos-duration="500"
+        data-aos="zoom-in">
+          <BookingForm />
+        </div>
       </section>
       <section className="text-center p-16 px-7 sm:px-20">{/*Offers */}
-      <h3 className="text-3xl sm:text-4xl font-extrabold font-['Inter'] mb-4">Why <span className="text-[#4477CE]">Choose</span> Us?</h3>
-      <p className=" max-w-xl mx-auto font-['rubik'] text-sm text-gray-700">Bill Car Rental is a reputable car rental company that offers a wide selection of vehicles for various transportation needs.</p>
-      <div className=" mt-10 w-full flex flex-col md:flex-row gap-7 justify-between items-center">{/*flex of offers */}
-        <div className="flex flex-col items-center justify-center p-4 w-[290px] text-center">
+      <article 
+      data-aos="zoom-in"
+      className=" mb-16 md:mb-4"
+      >
+        <h3 className="text-3xl sm:text-4xl font-extrabold font-['Inter'] mb-4">Why <span className="text-[#4477CE]">Choose</span> Us?</h3>
+        <p className=" max-w-xl mx-auto font-['rubik'] text-sm text-gray-700">Bill Car Rental is a reputable car rental company that offers a wide selection of vehicles for various transportation needs.</p>
+      </article>
+      <div className=" w-full flex flex-col md:flex-row gap-7 justify-between items-center">{/*flex of offers */}
+        <div 
+        data-aos="zoom-in"
+        data-aos-delay="70"
+        className="flex flex-col items-center justify-center p-4 w-[290px] text-center">
             <FontAwesomeIcon 
             icon={faClockRotateLeft}
             className="text-7xl text-[#4477CE] mb-6"
@@ -41,7 +60,10 @@ const Home = () => {
             <h5 className=" text-xl font-bold font-['Inter'] mb-2">24/7 Support</h5>
             <p className="font-['rubik'] text-sm">We have a dedicated customer support team available to assist and emergency support.</p>
         </div>
-        <div className="flex flex-col items-center justify-center p-4 w-[290px] text-center md:mt-28">
+        <div 
+        data-aos="zoom-in"
+        data-aos-delay="100"
+        className="flex flex-col items-center justify-center p-4 w-[290px] text-center md:mt-28">
             <FontAwesomeIcon 
             icon={faHeadset}
             className="text-7xl text-[#4477CE] mb-6"
@@ -49,7 +71,10 @@ const Home = () => {
             <h5 className=" text-xl font-bold font-['Inter'] mb-2">Corporate Services</h5>
             <p className="font-['rubik'] text-sm">We provide tailored solutions for corporate clients, offerring rental plans for business travel needs.</p>
         </div>
-        <div className="flex flex-col items-center justify-center p-4 w-[290px] text-center">
+        <div 
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        className="flex flex-col items-center justify-center p-4 w-[290px] text-center">
             <FontAwesomeIcon 
             icon={faHandHoldingDollar}
             className="text-7xl text-[#4477CE] mb-6"

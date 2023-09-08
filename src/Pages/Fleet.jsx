@@ -2,12 +2,12 @@ import { Await, defer, useLoaderData, useLocation, useNavigate } from "react-rou
 import { getCars } from "../firebase";
 import BookingDeets from "../Components/BookingDeets";
 import BookingForm from "../Components/BookingForm";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 
 
 export async function fleetLoader(){
-  const data = await getCars();
+  const data = getCars();
   return defer({data: data});
 }
 
@@ -17,6 +17,10 @@ const Fleet = () => {
   const [brand, setBrand] = useState("");
   const [edit, setEdit] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
   
 
 
@@ -54,8 +58,8 @@ const Fleet = () => {
             <option value="Toyota">Toyota</option>
           </select>
           <Suspense
-          fallback={<div className="w-full h-screen flex justify-center items-center">
-            <h3 className=" animate-pulse">Loading...</h3>
+          fallback={<div className="w-full h-[48vh] flex justify-center items-center">
+            <h3 className=" animate-pulse text-2xl font-['Noto'] tracking-wider font-medium">Loading...</h3>
           </div>}
           >
             <Await resolve={loaderData.data}>
@@ -67,7 +71,10 @@ const Fleet = () => {
                     flex flex-wrap justify-start gap-8">
                       {cars.map(car => {
                         return (
-                          <div key={car.id} className=" w-[330px] bg-white shadow rounded-sm">
+                          <div 
+                          data-aos="zoom-in"
+                          key={car.id} 
+                          className=" w-[330px] bg-white shadow rounded-sm">
                           <div className="w-full h-[220px] object-center object-cover overflow-hidden">
                             <img src={car.link} alt="" className="w-full h-full" />
                           </div>

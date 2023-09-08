@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom"
 import success from "../assets/images/success.png"
+import { useEffect } from "react";
 
 const Successful = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
+
   return (
     <section className="flex flex-col items-center justify-center w-full h-screen text-center tracking-wider">
-        <img src={success} alt="" className=" w-48 mb-4 ease-linear" />
+        <img 
+        data-aos="zoom-out"
+        data-aos-duration="1000"
+        src={success} alt="" 
+        className=" w-48 mb-4 ease-linear" />
         <article className="font-['Raleway'] mb-4">
           <div className=" mb-4">
             <h5 className="font-medium">Payment Successful</h5>

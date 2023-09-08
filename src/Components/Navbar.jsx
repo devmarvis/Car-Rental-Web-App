@@ -22,17 +22,21 @@ const Navbar = () => {
             <NavLink
             style={handleActiveLink}
             to="."
+            onClick={() => setShowNav(false)}
             >Home</NavLink>
             <NavLink
             to="fleet"
+            onClick={() => setShowNav(false)}
             style={handleActiveLink}
             >Fleet</NavLink>
             <NavLink
             to="blog"
+            onClick={() => setShowNav(false)}
             style={handleActiveLink}
             >Blog</NavLink>
             <NavLink
             to="about"
+            onClick={() => setShowNav(false)}
             style={handleActiveLink}
             >About Us</NavLink>
             <button className="sm:hidden block">Login/Signup</button>

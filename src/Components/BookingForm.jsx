@@ -66,7 +66,7 @@ const BookingForm = ({ handleEdit }) => {
           onChange={handleFormInputs}
           value={formData.pickUpTime}
           name="pickUpTime"
-          type="text" 
+          type="time" 
           placeholder="Pickup Time" 
           className="py-2 px-4 bg-gray-200 rounded-md w-1/2 outline-none" />
           <input 

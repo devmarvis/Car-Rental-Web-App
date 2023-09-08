@@ -4,10 +4,15 @@ import { useAppContext } from "../Context/AppContext"
 import { faCreditCardAlt } from "@fortawesome/free-regular-svg-icons";
 import visaLogo from "../assets/images/visa-master.png"
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Payment = () => {
   const { selectedCar } = useAppContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
   
   return (
     <section className="w-full min-h-screen p-7 sm:px-20 pt-28 flex flex-col lg:flex-row md:items-start lg:gap-32">
@@ -122,7 +127,7 @@ const Payment = () => {
             </form>
           </div>
           <button 
-          onClick={() => navigate("/payment-success")}
+          onClick={() => navigate("/payment-success", {replace: true})}
           className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
         </div>
     </section>

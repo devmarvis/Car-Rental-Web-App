@@ -1,16 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BookingDeets from "../Components/BookingDeets";
 import { useAppContext } from "../Context/AppContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookingForm from "../Components/BookingForm";
 
 const BookSumm = () => {
   const { selectedCar, formDetails } = useAppContext();
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate();
 
   function handleFormEdit(){
     setEdit(!edit);
   }
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
   
   return (
     <section className="w-full p-7 sm:px-20 pt-28">
@@ -35,9 +40,9 @@ const BookSumm = () => {
               </article>
             </div>
           </div>
-          <Link 
-          to="/booking-summary/payment"
-          className=" bg-slate-900 text-white p-2 px-3 rounded-sm capitalize self-end">continue to book</Link>
+          <button 
+          onClick={() => navigate("/booking-summary/payment")}
+          className=" bg-slate-900 text-white p-2 px-3 rounded-sm capitalize self-end">continue to book</button>
         </div>
 
     </section>
