@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../Utils/AppContext";
 
 const BookingForm = ({ handleEdit }) => {
     const navigate = useNavigate();
-    const {formDetails, handleBookingForm} = useAppContext();
+    const {formDetails, handleBookingForm, setEdit} = useAppContext();
     const [formData, setFormData] = useState(formDetails || {
       pickUpAddress: "",
       dropOffAddress: "",
@@ -33,11 +33,12 @@ const BookingForm = ({ handleEdit }) => {
     }
 
     function handleSave(){
+      console.log("clicked");
       if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
         setErrorMessage("Please fill in all input fields");
       }else{
+        setEdit(false);
         handleBookingForm(formData);
-        handleEdit();
       }
     }
 
@@ -79,10 +80,10 @@ const BookingForm = ({ handleEdit }) => {
         </div>
         {errorMessage && <p className=" text-red-600">{errorMessage}</p>}
         {location.pathname !== "/" ? <button 
-        onClick={handleSave}
-        className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
+        onClick={() => handleSave()}
+        className=" self-start bg-gray-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
         type="submit"
-        className=" self-start bg-slate-900 p-2 px-3 text-gray-50 rounded-sm">Reserve Now</button>}
+        className=" self-start bg-[#4551f8] font-['Roboto'] p-2 px-3 text-gray-50 rounded-sm">Reserve Now</button>}
     </form>
     
   )

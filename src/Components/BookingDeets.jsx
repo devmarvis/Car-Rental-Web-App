@@ -1,10 +1,10 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../Utils/AppContext";
 import { useLocation } from "react-router-dom";
 
-const BookingDeets = ({handleEdit}) => {
-    const {formDetails} = useAppContext();
+const BookingDeets = () => {
+    const {formDetails, setEdit} = useAppContext();
     const {pickUpAddress, dropOffAddress, pickUpDate, pickUpTime} = formDetails;
     const location = useLocation();
   return (
@@ -24,7 +24,7 @@ const BookingDeets = ({handleEdit}) => {
             </div>
         </article>
         {location.pathname !== "/booking-summary/payment" && <button 
-        onClick={() => handleEdit()}
+        onClick={() => setEdit(true)}
         className=" uppercase bg-slate-900 text-gray-50 p-2 px-4 font-semibold">edit</button>}
     </div>
   );

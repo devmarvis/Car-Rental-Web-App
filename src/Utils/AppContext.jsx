@@ -11,6 +11,7 @@ export const AppProvider = ({children}) => {
     const [formDetails, setFormDetails] = useState(null);
     const [selectedCar, setSelectedCar] = useState(null);
     const [loginDetails, setLoginDetails] = useState(null);
+    const [edit, setEdit] = useState(false);
 
     function selectCar(car){
         setSelectedCar(car);
@@ -26,6 +27,7 @@ export const AppProvider = ({children}) => {
 
     function handleLogout(){
         setLoginDetails(null)
+        setFormDetails(null);
     }
 
 
@@ -39,6 +41,8 @@ export const AppProvider = ({children}) => {
             loginDetails, 
             handleLogin,
             handleLogout,
+            edit,
+            setEdit,
         }}>
             {children}
         </AppContext.Provider>

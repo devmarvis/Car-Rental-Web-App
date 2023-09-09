@@ -15,14 +15,14 @@ const Successful = () => {
         data-aos-duration="1000"
         src={success} alt="" 
         className=" w-48 mb-4 ease-linear" />
-        <article className="font-['Raleway'] mb-4">
+        <article className="font-['Raleway'] mb-5">
           <div className=" mb-4">
             <h5 className="font-medium">Payment Successful</h5>
             <p className=" text-sm">Check your email for the receipt</p>
           </div>
           <p>For further inquiries, please email <span><a className="cursor-pointer underline-offset-2 underline text-sm" >bcr@gmail.com</a></span></p>
         </article>
-        <Link to="/" className=" bg-gray-900 text-gray-50 rounded-sm p-2 px-4">Continue To Home</Link>
+        <Link to="/" className="rounded-sm font-['Roboto'] bg-[#4551f8] transition-all duration-500 text-gray-50 p-2 px-4">Continue To Home</Link>
     </section>
   )
 }

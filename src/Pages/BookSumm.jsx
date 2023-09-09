@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import BookingDeets from "../Components/BookingDeets";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../Utils/AppContext";
 import { useEffect, useState } from "react";
 import BookingForm from "../Components/BookingForm";
 
 const BookSumm = () => {
-  const { selectedCar, formDetails } = useAppContext();
-  const [edit, setEdit] = useState(false);
+  const { selectedCar, formDetails, } = useAppContext();
+  const {edit} = useAppContext();
   const navigate = useNavigate();
-
-  function handleFormEdit(){
-    setEdit(!edit);
-  }
 
   useEffect(() => {
     window.scrollTo(0,0)
@@ -21,8 +17,14 @@ const BookSumm = () => {
     <section className="w-full p-7 sm:px-20 pt-28">
         <h3 className=" font-['Roboto'] font-semibold text-lg">Booking Summary:</h3>
         <div className=" flex flex-col w-full max-w-3xl">
-        { !edit && formDetails ? <BookingDeets handleEdit={handleFormEdit} /> : <BookingForm handleEdit={handleFormEdit} />}
-          <div className="w-full flex flex-col md:flex-row mt-4">
+          <div
+          data-aos="zoom-in"
+          >
+          { !edit && formDetails ? <BookingDeets /> : <BookingForm />}
+          </div>
+          <div 
+          data-aos="zoom-in"
+          className="w-full flex flex-col md:flex-row mt-4">
             <div 
             className="w-full max-w-[350px] md:w-1/2 lg:w-[43%] h-[200px]">
               <img src={selectedCar.link} className="w-full h-full" alt={selectedCar.model} />
@@ -42,7 +44,7 @@ const BookSumm = () => {
           </div>
           <button 
           onClick={() => navigate("/booking-summary/payment")}
-          className=" bg-slate-900 text-white p-2 px-3 rounded-sm capitalize self-end">continue to book</button>
+          className=" bg-[#4551f8] font-['Roboto'] text-white p-2 px-3 rounded-sm capitalize self-end">continue to book</button>
         </div>
 
     </section>

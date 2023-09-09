@@ -6,8 +6,13 @@ const Footer = () => {
   return (
     <footer className=" w-full h-auto p-7 sm:px-20 flex flex-col md:gap-6 md:flex-row justify-between bg-[#EEEDED]">
         <article>
-            <h3 className=" text-2xl uppercase font-bold text-[#4477CE] font-logo">BCR</h3>
+            <h3 className=" text-2xl uppercase font-bold text-[#4551f8] font-logo">BCR</h3>
             <address className=" capitalize">37 old boston road, maryland, lagos state, nigeria.</address>
+            <a 
+            target="_blank" href="mailto:erobagacollins@gmail.com" className=" block">erobagacollins@gmail.com</a>
+            <a 
+            target="_blank"
+            href="tel:+2348064417586">+2348064417586</a>
         </article>
         <article>
             <h4 className=" uppercase mb-2">follow us</h4>

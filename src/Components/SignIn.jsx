@@ -1,6 +1,6 @@
 import { useState } from "react"
-import {Link, useNavigate} from"react-router-dom"
-import { useAppContext } from "../Context/AppContext"
+import {Link, useLocation, useNavigate} from"react-router-dom"
+import { useAppContext } from "../Utils/AppContext"
 
 const SignIn = () => {
   const [credentials, setCredentials] = useState({
@@ -8,8 +8,10 @@ const SignIn = () => {
     password: "",
   })
   const [errorMessage, setErrorMessage] = useState("");
-   const { handleLogin, loginDetails }  = useAppContext();
+   const { handleLogin }  = useAppContext();
    const navigate = useNavigate();
+   const location = useLocation();
+  const redirectPath = location.state?.path || "/"
 
   function handleChange(e){
     const {value, name} = e.target;
@@ -26,12 +28,14 @@ const SignIn = () => {
       return false;
     }
     handleLogin(credentials);
-    navigate("/", {replace: true})
+    navigate(redirectPath, {replace: true})
   }
 
 
   return (
-    <div className="lg:w-[50%] md:w-[78%] w-[86%] h-auto mx-auto shadow py-8 px-6 rounded-md">
+    <div 
+    data-aos="zoom-in"
+    className="lg:w-[50%] md:w-[78%] w-[86%] h-auto mx-auto shadow py-9 px-6 rounded-md flex flex-col">
       <h3 className="text-center text-2xl font-semibold font-['Roboto'] mb-2 text-[#4477CE]">Welcome Back!</h3>
       {errorMessage && <p className=" text-red-500 text-center">{errorMessage}</p>}
       <form 
@@ -61,7 +65,7 @@ const SignIn = () => {
     </form>
     <button 
       onClick={handleSubmit}
-      className=" p-2 px-4 bg-gray-900 text-gray-50 uppercase font-['Raleway'] font-medium tracking-wider rounded-sm mt-5 mx-auto mb-2">LOGIN</button>
+      className=" p-2 px-4 bg-gray-900 text-gray-50 uppercase font-['Raleway'] font-medium tracking-wider rounded-sm mt-3 mb-3 ">LOGIN</button>
     <p className="text-center">Don't have an account?<Link className=" underline underline-offset-2">Signup</Link> </p>
     </div>
   )

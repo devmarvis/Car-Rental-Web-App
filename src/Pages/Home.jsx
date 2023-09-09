@@ -36,7 +36,9 @@ const Home = () => {
         </article>
         <div 
         data-aos-duration="500"
-        data-aos="zoom-in">
+        data-aos="zoom-in"
+        data-aos-anchor-placement="top"
+        >
           <BookingForm />
         </div>
       </section>

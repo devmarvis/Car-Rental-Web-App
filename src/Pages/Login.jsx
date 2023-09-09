@@ -1,5 +1,5 @@
 import loginBg from "../assets/images/loginBg.jpg"
-import { Outlet } from "react-router-dom"
+import { Outlet, } from "react-router-dom"
 
 const Login = () => {
   return (

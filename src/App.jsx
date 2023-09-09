@@ -12,10 +12,12 @@ import { useEffect } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import Payment from "./Pages/Payment"
-import { AppProvider } from "./Context/AppContext"
+import { AppProvider } from "./Utils/AppContext"
 import Successful from "./Pages/Successful"
 import Login from "./Pages/Login"
 import SignIn from "./Components/SignIn"
+import { RequireAuth } from "./Utils/RequireAuth"
+import Error from "./Pages/Error"
 
 
 
@@ -38,7 +40,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route
      path="booking-summary" 
-     element={<BookSumm />}
+     element={<RequireAuth><BookSumm /></RequireAuth>}
     />
     <Route 
      path="/booking-summary/payment"
@@ -50,7 +52,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route
     path="*"
-    element={<section></section>}
+    element={<Error />}
      />
     <Route
     path="login"

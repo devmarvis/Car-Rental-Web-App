@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BookingDeets from "../Components/BookingDeets"
-import { useAppContext } from "../Context/AppContext"
+import { useAppContext } from "../Utils/AppContext"
 import { faCreditCardAlt } from "@fortawesome/free-regular-svg-icons";
 import visaLogo from "../assets/images/visa-master.png"
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,9 @@ const Payment = () => {
   
   return (
     <section className="w-full min-h-screen p-7 sm:px-20 pt-28 flex flex-col lg:flex-row md:items-start lg:gap-32">
-        <div className="w-full max-w-[500px] md:min-w-[410px] lg:w-1/5 mb-6">{/*booking-summary */}
+        <div 
+        data-aos="zoom-in"
+        className="w-full max-w-[500px] md:min-w-[410px] lg:w-1/5 mb-6">{/*booking-summary */}
           <h4 className=" font-['Roboto'] mb-2">Booking Summary</h4>
           <BookingDeets />
           <div className="p-4">
@@ -44,7 +46,9 @@ const Payment = () => {
               </div>
           </div>
         </div>
-        <div className="w-full max-w-md flex flex-col">{/*Payment */}
+        <div 
+        data-aos="zoom-in"
+        className="w-full max-w-md flex flex-col">{/*Payment */}
           <div className=" flex items-center justify-between mb-4">
             <div>
               <input 
@@ -129,7 +133,7 @@ const Payment = () => {
               </div>
               <button 
               onClick={() => navigate("/payment-success", {replace: true})}
-              className=" bg-gray-900 text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
+              className=" bg-[#4551f8] font-['Roboto'] text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
             </form>
           </div>
         </div>
