@@ -35,10 +35,10 @@ const Footer = () => {
             </ul>
         </article>
         <nav className="flex flex-row md:flex-col gap-3 justify-center my-4 uppercase text-sm font-['Roboto'] font-medium">
-            <Link>home</Link>
-            <Link>fleet</Link>
-            <Link>blog</Link>
-            <Link>about us</Link>
+            <Link to="/">home</Link>
+            <Link to="fleet">fleet</Link>
+            <Link to="blog">blog</Link>
+            <Link to="about">about us</Link>
         </nav>
         <article>
             <h4 className=" capitalize font-['Roboto'] mb-2">subscribe to our newsletter</h4>

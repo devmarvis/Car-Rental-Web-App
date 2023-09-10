@@ -12,12 +12,11 @@ const Successful = () => {
     <section className="flex flex-col items-center justify-center w-full h-screen text-center tracking-wider">
         <img 
         data-aos="zoom-out"
-        data-aos-duration="1000"
-        src={success} alt="" 
-        className=" w-48 mb-4 ease-linear" />
+        src={success} alt="success-png" 
+        className=" w-48 mb-3 ease-linear" />
         <article className="font-['Raleway'] mb-5">
           <div className=" mb-4">
-            <h5 className="font-medium">Payment Successful</h5>
+            <h5 className="font-medium text-lg">Payment Successful</h5>
             <p className=" text-sm">Check your email for the receipt</p>
           </div>
           <p>For further inquiries, please email <span><a className="cursor-pointer underline-offset-2 underline text-sm" >bcr@gmail.com</a></span></p>

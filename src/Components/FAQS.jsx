@@ -34,7 +34,7 @@ function FAQItem({question, answer}){
 
 const FAQS = () => {
   return (
-    <div className="w-full max-w-xl mx-auto">{/*FAQ Container */}
+    <div className="w-full max-w-xl mx-auto mb-9">{/*FAQ Container */}
       {
         faqs.map((faq, idx) => (
             <FAQItem key={idx} question={faq.question} answer={faq.answer} />

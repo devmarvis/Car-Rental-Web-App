@@ -29,7 +29,7 @@ const Home = () => {
       >{/*Hero Section */}
         <article 
         data-aos="zoom-in"
-        data-aos-duration="700"
+        data-aos-duration="500"
         className=" text-gray-900 mb-8">
           <h3 className=" capitalize text-2xl md:text-4xl md:leading-relaxed leading-normal font-['Raleway'] font-medium mb-2">Why wait in line when you<br/> can book your<br/><span className=" font-bold">rental car online?</span></h3>
           <p className=" tracking-wide font-['Inter']">Rent a car at your fingertips, no extra charges.</p>

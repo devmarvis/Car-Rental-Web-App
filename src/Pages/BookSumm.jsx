@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import BookingDeets from "../Components/BookingDeets";
 import { useAppContext } from "../Utils/AppContext";
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 import BookingForm from "../Components/BookingForm";
 
 const BookSumm = () => {
-  const { selectedCar, formDetails, } = useAppContext();
-  const {edit} = useAppContext();
+  const { selectedCar, formDetails, edit} = useAppContext();
   const navigate = useNavigate();
 
   useEffect(() => {

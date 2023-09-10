@@ -15,11 +15,12 @@ const Fleet = () => {
   const { formDetails, selectCar, edit, } = useAppContext();
   const loaderData = useLoaderData();
   const [brand, setBrand] = useState("");
+  const [errorMsg, setErrorMsg] = useState("")
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0,0)
-  }, []);
+  }, [errorMsg]);
   
 
 
@@ -29,7 +30,8 @@ const Fleet = () => {
 
   function handleBook(car){
     if(!formDetails){
-      return console.log("error");
+      setErrorMsg("Please fill in details");
+      return;
     }
     selectCar(car);
     navigate("/booking-summary")
@@ -37,7 +39,7 @@ const Fleet = () => {
 
   return (
     <section className="w-full p-7 sm:px-20 pt-28 flex flex-col lg:flex-row gap-5">
-      {!edit && formDetails ? <BookingDeets /> : <BookingForm />}
+      {!edit && formDetails ? <BookingDeets /> : <BookingForm msg={errorMsg} setMsg={setErrorMsg} />}
         <div className="flex flex-col items-start w-full lg:w-4/5">
           <h3 className="font-semibold text-xl font-['Roboto'] mb-1">Select Car Brand:</h3>
           <select 

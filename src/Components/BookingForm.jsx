@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../Utils/AppContext";
 
-const BookingForm = ({ handleEdit }) => {
+const BookingForm = ({ msg, setMsg }) => {
     const navigate = useNavigate();
     const {formDetails, handleBookingForm, setEdit} = useAppContext();
     const [formData, setFormData] = useState(formDetails || {
@@ -14,6 +14,7 @@ const BookingForm = ({ handleEdit }) => {
 
     function handleFormInputs(e){
         const {name, value} = e.target;
+        setMsg?.("");
         setFormData(prev => ({
             ...prev,
             [name]: value,
@@ -25,7 +26,7 @@ const BookingForm = ({ handleEdit }) => {
     function handleReserveSubmit(e){
       e.preventDefault();
       if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
-        setErrorMessage("Please fill in all input fields");
+        setErrorMessage("Please fill in details");
       }else{
         handleBookingForm(formData);
         navigate("/fleet");
@@ -33,7 +34,6 @@ const BookingForm = ({ handleEdit }) => {
     }
 
     function handleSave(){
-      console.log("clicked");
       if(!formData.pickUpAddress || !formData.dropOffAddress || !formData.pickUpDate || !formData.pickUpTime ){
         setErrorMessage("Please fill in all input fields");
       }else{
@@ -78,7 +78,7 @@ const BookingForm = ({ handleEdit }) => {
           placeholder="Pickup Date" 
           className="py-2 px-4 bg-gray-200 rounded-md w-1/2 outline-none" />
         </div>
-        {errorMessage && <p className=" text-red-600">{errorMessage}</p>}
+        {errorMessage && <p className=" text-red-600">{errorMessage}</p> || msg && <p className=" text-red-600">{msg}</p>}
         {location.pathname !== "/" ? <button 
         onClick={() => handleSave()}
         className=" self-start bg-gray-900 p-2 px-3 text-gray-50 rounded-sm">Save</button> : <button 
