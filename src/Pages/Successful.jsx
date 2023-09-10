@@ -13,7 +13,7 @@ const Successful = () => {
         <img 
         data-aos="zoom-out"
         src={success} alt="success-png" 
-        className=" w-48 mb-3 ease-linear" />
+        className="w-48 mb-3 ease-linear" />
         <article className="font-['Raleway'] mb-5">
           <div className=" mb-4">
             <h5 className="font-medium text-lg">Payment Successful</h5>
