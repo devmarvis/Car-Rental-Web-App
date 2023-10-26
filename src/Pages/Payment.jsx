@@ -10,6 +10,11 @@ const Payment = () => {
   const { selectedCar } = useAppContext();
   const navigate = useNavigate();
 
+  const onInfoSubmit = (e) => {
+    e.preventDefault();
+    navigate("/payment-success", {replace: true})
+  }
+
   useEffect(() => {
     window.scrollTo(0,0)
   }, []);
@@ -69,13 +74,16 @@ const Payment = () => {
             <img src={visaLogo} alt="" className=" w-24 h-7" />
           </div>
           <div className=" mb-9">
-            <form className="flex flex-col w-full gap-3">
+            <form 
+            onSubmit={onInfoSubmit}
+            className="flex flex-col w-full gap-3">
               <div>
                 <label 
                 htmlFor="name"
                 className=" font-['Roboto']"
                 >Name of Card Owner</label>
                 <input 
+                required
                 autoComplete="name"
                 type="text"
                 id="name" 
@@ -87,6 +95,7 @@ const Payment = () => {
                 className=" font-['Roboto']"
                 >Email Address</label>
                 <input 
+                required
                 autoComplete="email"
                 type="email"
                 id="email" 
@@ -98,6 +107,7 @@ const Payment = () => {
                 className=" font-['Roboto']"
                 >Card Number</label>
                 <input 
+                required
                 autoComplete="cc-number"
                 type="text"
                 id="card-no" 
@@ -110,6 +120,7 @@ const Payment = () => {
                   className=" font-['Roboto']"
                   >Expiry Date</label>
                   <input 
+                  required
                   autoComplete="cc-exp"
                   type="month" 
                   name="expiry" 
@@ -123,6 +134,7 @@ const Payment = () => {
                   className=" font-['Roboto']"
                   >CVV</label>
                   <input 
+                  required
                   autoComplete="cc-csc"
                   type="text" 
                   name="cvv" 
@@ -132,7 +144,7 @@ const Payment = () => {
                 </div>
               </div>
               <button 
-              onClick={() => navigate("/payment-success", {replace: true})}
+              type="submit"
               className=" bg-[#4551f8] font-['Roboto'] text-gray-50 p-2 px-4 rounded-sm self-end">Proceed</button>
             </form>
           </div>

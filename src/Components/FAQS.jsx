@@ -18,7 +18,7 @@ function FAQItem({question, answer}){
             data-aos="zoom-in"
             data-aos-duration="500"
             data-aos-anchor-placement="bottom-bottom"
-            className=" flex justify-between mb-2">{/*faq question */}
+            className=" flex justify-between mb-2 cursor-pointer">{/*faq question */}
                 <span className=" font-['Roboto'] font-semibold text-[#4477CE]">{question}</span>
                 <span>
                     <FontAwesomeIcon

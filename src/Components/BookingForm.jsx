@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../Utils/AppContext";
 
+
 const BookingForm = ({ msg, setMsg }) => {
     const navigate = useNavigate();
     const {formDetails, handleBookingForm, setEdit} = useAppContext();
@@ -14,11 +15,13 @@ const BookingForm = ({ msg, setMsg }) => {
 
     function handleFormInputs(e){
         const {name, value} = e.target;
+
         setMsg?.("");
         setFormData(prev => ({
             ...prev,
             [name]: value,
         }))
+        
     }
 
     const [errorMessage, setErrorMessage] = useState();

@@ -56,7 +56,7 @@ const Fleet = () => {
           </select>
           <Suspense
           fallback={<div className="w-full h-[48vh] flex justify-center items-center">
-            <h3 className=" animate-pulse text-2xl font-['Noto'] tracking-wider font-medium">Loading...</h3>
+            <h3 className=" animate-pulse text-2xl font-['Noto'] tracking-wider font-medium">Loading Cars...</h3>
           </div>}
           >
             <Await resolve={loaderData.data}>

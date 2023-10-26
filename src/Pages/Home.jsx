@@ -25,14 +25,14 @@ const Home = () => {
       style={{
         backgroundImage: `url(${bg2})`
         }}
-      className="relative w-full h-[90vh] max-h-[754px] bg-cover bg-center bg-no-repeat px-7 sm:px-20 pt-32 after:w-full after:h-full"
+      className="relative w-full h-[90vh] max-h-[754px] bg-cover bg-center bg-no-repeat px-7 sm:px-20 pt-28 md:pt-32 after:w-full after:h-full"
       >{/*Hero Section */}
         <article 
         data-aos="zoom-in"
         data-aos-duration="500"
         className=" text-gray-900 mb-8">
-          <h3 className=" capitalize text-2xl md:text-4xl md:leading-relaxed leading-normal font-['Raleway'] font-medium mb-2">Why wait in line when you<br/> can book your<br/><span className=" font-bold">rental car online?</span></h3>
-          <p className=" tracking-wide font-['Inter']">Rent a car at your fingertips, no extra charges.</p>
+          <h3 className=" capitalize text-2xl md:text-4xl md:leading-relaxed leading-normal font-['Raleway'] font-medium mb-2">Why wait in line when you<br/> can book your<br/><span className=" font-bold text-[28px]">rental car online?</span></h3>
+          <p className=" tracking-wide font-['Inter'] font-medium">Rent a car at your fingertips, no extra charges.</p>
         </article>
         <div 
         data-aos-duration="500"
@@ -87,14 +87,14 @@ const Home = () => {
       </div>
       </section>
       <section className="p-16 px-7 sm:px-20">
-        <article className="w-full flex justify-between">
-        <h3 className="text-3xl sm:text-4xl font-extrabold font-['Inter'] mb-4">HighLight Vehicles</h3>
+        <article className="w-full flex justify-between" >
+        <h3 className="text-[20px] sm:text-4xl font-extrabold font-['Inter']">HighLight Vehicles</h3>
         <Link className=" font-medium font-['Roboto'] underline underline-offset-2" to="fleet">View All</Link>
         </article>
         <div 
         className="flex flex-wrap items-center justify-center md:justify-start gap-9 py-8">
           <Suspense
-          fallback={<div className="w-full min-h-screen flex justify-center items-center"><h3 className="text-2xl font-medium tracking-widest animate-pulse">Loading...</h3></div>}
+          fallback={<div className="w-full min-h-screen flex justify-center items-center"><h3 className="text-2xl font-medium tracking-widest animate-pulse">Loading Cars...</h3></div>}
           >
             <Await
             resolve={loaderData.data}
